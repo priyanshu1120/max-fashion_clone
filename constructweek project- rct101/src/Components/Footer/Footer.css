@@ -1,0 +1,122 @@
+#footerContainer {
+  position: fixed;
+  background-color: rgb(255, 204, 255);
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+  
+}
+footer  hr {
+  max-width: 100%;
+  margin: auto;
+  border: 1px solid rgb(235, 235, 235);
+  margin-top:5%
+}
+div#subscription-container\ flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px;
+  letter-spacing: 2px;
+  line-height: 50px;
+}
+/* subscribe-form-css  */
+#subscription-container{
+  display: flex;
+  justify-content: space-around;
+  padding-top:1%;
+
+}
+.input-sub-box,
+.btn-sub-box {
+  padding: 10px;
+  
+}
+.input-sub-box {
+  width: 60%;
+  height:60px;
+  margin-top:20px;
+  background-color: rgb(240, 240, 240);
+  border: none;
+}
+.btn-sub-box {
+  background-color: black;
+  width:180px;
+  color: white;
+  height:60px;
+}
+/* list of items css  */
+.list-up-div {
+    display:flex;
+  justify-content: space-around;
+  font-size: 14px;
+  color: rgb(109, 109, 109);
+  line-height: 30px;
+}
+.list-down-div {
+    display:flex;
+  margin-top: 20px;
+  justify-content: space-evenly;
+  font-size: 14px;
+  color: rgb(109, 109, 109);
+  line-height: 30px;
+}
+.list-container b {
+  color: black;
+}
+.list-container {
+  padding: 50px;
+}
+
+/* footer banner css  */
+#footer-banner-social {
+    width:100%;
+    height:80px;
+    border:2px solid #ecedeb;
+  display:flex; 
+  justify-content: space-between;
+  align-items: center;
+  padding:30px;
+}
+.social-flex{
+    display: flex;
+    width:15%;
+    justify-content: space-around;
+    align-items: center;
+}
+.left-social-handler{
+    width:60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-contect-uss{
+    width:18%;
+    height:50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.social-contect-us{
+    width:30%;
+    height:50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.social > i {
+  font-size: 20px;
+}
+
+/* copyright-div-css  */
+#copyright-div {
+    display:flex;
+  margin-left: 150px;
+  font-size: 13px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
