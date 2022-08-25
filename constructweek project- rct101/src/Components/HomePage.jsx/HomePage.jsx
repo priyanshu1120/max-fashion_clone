@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-const HomePage = () => {
+const HomePage = ({visible}) => {
+
   return (
-    <div>HomePage</div>
+    <div>
+      hello
+   
+    </div>
   )
 }
 
