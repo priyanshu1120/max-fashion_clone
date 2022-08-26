@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
 
-const Pagination = ({page,handleChange}) => {
+const Pagination = ({pages,handleChange}) => {
    
     const handleClick =()=>{
-         handleChange(page+1)
+         handleChange(1)
     }
-    console.log(page)
+    console.log(pages)
      
   return (
     <button style={{color:"blue"}} onClick={handleClick}>

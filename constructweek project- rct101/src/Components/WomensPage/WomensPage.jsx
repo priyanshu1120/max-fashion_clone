@@ -1,10 +1,10 @@
 import { Box, VStack,Heading,Stack,Flex, SimpleGrid, Img,Text,Button, propNames } from '@chakra-ui/react'
 import React,{useState,useEffect} from 'react'
 import "./WomensPage.css"
-import WomenItem from './WomenItem'
-import Pagination from './Pagination'
-import {getWomen} from "./WomenApi"
-import { getTops } from './WomenApi'
+import Pagination from '../Pagination'
+import { getWomen } from '../Api/Api'
+
+
 
 const WomensPage = () => {
 
@@ -23,25 +23,30 @@ const WomensPage = () => {
    }).then(res=>res.json())
    .then(res=>{
        setWomenData(res)
+       console.log(res)
      })
     }
-    const handleTop=()=>{
+
+     const handleTop=()=>{
       setName("Tops")
-      setPages(1)
       getData(pages,name)
     }
-  const handleIndianWear =()=>{
+   const handleIndianWear =()=>{
     setName("Indian Wear")
     getData(pages,name)
    
   }
-
-  const handleSportWear =()=>{
+  
+    const handleSportWear =()=>{
     setName("Sport Wear")
     getData(pages,name)
-
+  
   }
 
+const handlePages=(value)=>{
+  setPages(pages+value)
+  getData(pages,name)
+}
   console.log(name)
 
   return (
@@ -51,13 +56,13 @@ const WomensPage = () => {
      
        <SimpleGrid  columns={[4,4,8,8]} w="95%" h="70px" spacing={2} mt="20px">
          <Box display="flex" justifyContent="center"  alignItems="center" color="#929394" fontWeight={500}>Shop For</Box>
-         <Box  onClick={handleTop} border="1px solid green" display="flex" borderRadius={2} justifyContent="space-between" alignItems="center"><Img src="/images/women-top.png" w="40px"h="40px"/><Text>Topes & Toes</Text></Box>
-         <Box onClick={handleIndianWear} border="1px solid green"></Box>
-         <Box onClick={handleSportWear} border="1px solid green"></Box>
-         <Box onClick={handleTop} border="1px solid green"></Box>
-         <Box onClick={handleTop} border="1px solid green"></Box>
-         <Box onClick={handleTop} border="1px solid green"></Box>
-         <Box onClick={handleTop}  border="1px solid green"></Box>
+         <Box cursor="pointer"  onClick={handleTop} border="1px solid green" display="flex" borderRadius={2} justifyContent="space-between" alignItems="center"><Img src="/images/women-top.png" w="40px"h="40px"/><Text>Topes & Toes</Text></Box>
+         <Box cursor="pointer"  onClick={handleIndianWear} border="1px solid green" display="flex" borderRadius={2} justifyContent="space-between" alignItems="center"><Img src="/images/indianWearWomen.png" w="40px"h="40px"/><Text>Indian Wear</Text></Box>
+         <Box cursor="pointer"  onClick={handleSportWear} border="1px solid green" display="flex" borderRadius={2} justifyContent="space-between" alignItems="center" ><Img src="/images/womensport.png" w="40px"h="40px"/><Text>Sports Wear</Text></Box>
+         <Box cursor="pointer"  onClick={handleTop} border="1px solid green" display="flex" borderRadius={2} justifyContent="space-between" alignItems="center"><Img src="/images/bottomwomen.png" w="40px"h="40px"/><Text>Bottom Wear</Text></Box>
+         <Box cursor="pointer"  onClick={handleTop} border="1px solid green"display="flex" borderRadius={2} justifyContent="space-between" alignItems="center"><Img src="/images/sleepwearwomen.png" w="40px"h="40px"/><Text>Sleep Wear</Text></Box>
+         <Box cursor="pointer"  onClick={handleTop} border="1px solid green"display="flex" borderRadius={2} justifyContent="space-between" alignItems="center"><Img src="/images/footwearwomen.png" w="40px"h="40px"/><Text>Footwear</Text></Box>
+         <Box cursor="pointer"  onClick={handleTop}  border="1px solid green"display="flex" borderRadius={2} justifyContent="space-between" alignItems="center"><Img src="/images/winterwomen.png" w="40px"h="40px"/><Text>Winter Wear</Text></Box>
        </SimpleGrid>
       </Box>
       
@@ -126,7 +131,7 @@ const WomensPage = () => {
        
 
        
-    <Box border="1px solid red" mt="40px" w="100%">
+    <Box mt="40px" w="100%">
      <SimpleGrid columns={[1,2,3,4]} spacing={5}>
     {   
          womendata&&womendata.map((item)=>
@@ -135,14 +140,14 @@ const WomensPage = () => {
                 <Img src={item.image} alt={item.name} h="400px" />
                 <Text fontWeight={700}>₹ {item.price}</Text>
                 <Text>{item.description}</Text>
-                <Button color="white">Add TO Basket</Button>
+                <Button colorScheme='blue' >Add TO Basket</Button>
                 </Stack>
              </Box>
     )
     } 
      </SimpleGrid>
      <Box m="auto" border="1px solid blue" w="20%" h="40px" mt="70px" display="flex" justifyContent="center" alignItem="center">
-     <Pagination page={pages} handleChange={setPages} />
+     <Pagination pages={pages} handleChange={handlePages} />
       </Box>
    
     </Box>
