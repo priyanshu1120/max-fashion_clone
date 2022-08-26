@@ -1,0 +1,25 @@
+.select-option{
+    width:80%;
+    height:60px;
+    display:flex;
+   margin-left: 20px;
+     gap:10px;
+     align-items: center;
+   
+}
+
+.select-option >div{
+    width:20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color:#675e5c;
+    background-color: white;  
+}
+#price{
+    border:"none";
+    outline:"none";
+}
+
