@@ -181,7 +181,7 @@ const BoysPage = () => {
                 <Img src={item.image} alt={item.name} h="400px" />
                 <Text fontWeight={700}>₹ {item.price}</Text>
                 <Text>{item.description}</Text>
-                <Button colorScheme='blue' >Add TO Basket</Button>
+                <Button colorScheme='blue' onClick = {()=>alert("Product Added Successfully")} >Add TO Basket</Button>
                 </Stack>
              </Box>
     )
