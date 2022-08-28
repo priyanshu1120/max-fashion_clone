@@ -1,12 +1,18 @@
 import "./Footer.css"
-import {Heading,Text,Box} from "@chakra-ui/react"
+import {Heading,Text,Box, StatHelpText} from "@chakra-ui/react"
 import {Link} from "react-router-dom"
 import {FaFacebookF,FaTwitter,FaInstagram} from "react-icons/fa"
 import {IoMdCall} from "react-icons/io"
 import {MdLiveHelp,MdOutlineMailOutline} from "react-icons/md"
+import { useState } from "react"
 
 
-function footer(){
+function Footer(){
+ const [text,setText] = useState("")
+  const handleClick= ()=>{
+   setText("");
+   alert("Thanku for Subscibe")
+  }
     return <footer>
     <div id="footerContainer ">
       <hr />
@@ -14,8 +20,9 @@ function footer(){
         <div>
           <Heading>Subscribe to our awesome emails.</Heading>
           <Text mt="10px">Get our latest offers and news straight in your inbox.</Text>
-          <input Class="input-sub-box" type="text" placeholder="Please enter an email address" />
-          <button Class="btn-sub-box">Subscribe</button>
+          <input Class="input-sub-box" type="text" placeholder="Please enter an email address" onChange={(e)=>
+           setText(e.target.value)} value={text} />
+          <button Class="btn-sub-box"  onClick={handleClick}>Subscribe</button>
         </div>
 
         <div>
@@ -32,26 +39,25 @@ function footer(){
         <div className="list-up-div flex">
           <div>
             <p><b>Women</b></p>
-            <p>Tops</p>
-            <p>Dresses & Jumpsuits</p>
-            <p>Sportswear</p>
-            <p>Bottoms</p>
-            <p>Winterwear</p>
-            <p>Ethnicwear</p>
-            <p>Lingerie</p>
-            <p>Sleepwear</p>
-            <p>Accessories</p>
-            <p>Shoes</p>
+            <Link to="/womens"><p>Tops</p></Link>
+            <Link to = "/womens"><p>Dresses & Jumpsuits</p> </Link>
+            <Link to = "/womens"><p>Sportswear</p> </Link>
+            <Link to = "/women"><p>Bottoms</p> </Link>
+            <Link to = "/women"><p>Winterwear</p> </Link>
+            <Link to = "/women"> <p>Ethnicwear</p> </Link>
+            <Link to = "/womens"><p>Lingerie</p> </Link>
+            <Link to = "/womens"><p>Sleepwear</p> </Link>
+            <Link to = "/womens"><p>Accessories</p> </Link>
+            <Link to = "/womens"><p>Shoes</p> </Link>
           </div>
           <div>
             <p><b>Men</b></p>
-
-            <p>Tops</p>
-            <p>Bottoms</p>
-            <p>Sportswear</p>
-            <p>Winterwear</p>
-            <p>Accessories</p>
-            <p>Shoes</p>
+            <Link to="/mens"><p>Tops</p></Link>
+            <Link to="/mens"><p>Bottoms</p> </Link>
+            <Link to="/mens"><p>Sportswear</p> </Link>
+            <Link to="/mens"><p>Winterwear</p></Link>
+            <Link to="/mens"><p>Accessories</p></Link>
+            <Link to="/mens"><p>Shoes</p></Link>
           </div>
           <div>
             <p><b>Boys</b></p>
@@ -142,4 +148,4 @@ function footer(){
     </div>
   </footer>
 }
-export default footer;
+export default Footer;
