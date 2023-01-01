@@ -1,12 +1,12 @@
 // <============mens api =====================================>
 
 export const  getMenAll = ()=>{
-    return fetch(`https://fake-eval-app.herokuapp.com/mens`)
+    return fetch(`https://relieved-outgoing-afterthought.glitch.me/mens`)
   }
 
 
 export const  getMen = ({pages,name})=>{
-    return fetch(`https://fake-eval-app.herokuapp.com/mens?_page=${pages}&_limit=12&item_name=${name}`)
+    return fetch(`https://relieved-outgoing-afterthought.glitch.me/mens?_page=${pages}&_limit=12&item_name=${name}`)
   }
 
 
@@ -14,7 +14,7 @@ export const  getMen = ({pages,name})=>{
   // <============ womens api =====================================>
 
   export const  getWomen = ({pages,name})=>{
-    return fetch(`https://fake-eval-app.herokuapp.com/womens?_page=${pages}&_limit=12&item_name=${name}`)
+    return fetch(`https://relieved-outgoing-afterthought.glitch.me/womens?_page=${pages}&_limit=12&item_name=${name}`)
   }
 
 
@@ -24,11 +24,11 @@ export const  getMen = ({pages,name})=>{
 
 
   export const  getGirlAll = ()=>{
-    return fetch(`https://fake-eval-app.herokuapp.com/girls`)
+    return fetch(`https://relieved-outgoing-afterthought.glitch.me/girls`)
   }
 
   export const  getGirl = ({pages,name})=>{
-    return fetch(`https://fake-eval-app.herokuapp.com/girls?_page=${pages}&_limit=12&item_name=${name}`)
+    return fetch(`https://relieved-outgoing-afterthought.glitch.me/girls?_page=${pages}&_limit=12&item_name=${name}`)
   }
 
 
@@ -36,16 +36,16 @@ export const  getMen = ({pages,name})=>{
 
 
     export const  getBoysAll = ()=>{
-      return fetch(`https://fake-eval-app.herokuapp.com/boys`)
+      return fetch(`https://relieved-outgoing-afterthought.glitch.me/boys`)
     }
   
     export const  getBoy = ({pages,name})=>{
-      return fetch(`https://fake-eval-app.herokuapp.com/boys?_page=${pages}&_limit=12&item_name=${name}`)
+      return fetch(`https://relieved-outgoing-afterthought.glitch.me/boys?_page=${pages}&_limit=12&item_name=${name}`)
     }
 
        // <============ Search api =====================================>
 
 
        export const  getSearch = ({pages,text})=>{
-        return fetch(`https://fake-eval-app.herokuapp.com/Product?_page=${pages}&_limit=12&item_name=${text}`)
+        return fetch(`https://relieved-outgoing-afterthought.glitch.me/Product?_page=${pages}&_limit=12&item_name=${text}`)
       }
