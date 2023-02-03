@@ -10,6 +10,6 @@ const productSchema = mongoose.Schema({
        gender:{type:String}
 })
 
-const productModel = mongoose.model("product",productSchema)
+const ProductModel = mongoose.model("product",productSchema)
 
-module.exports = {productModel}
+module.exports = {ProductModel}
