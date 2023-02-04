@@ -4,6 +4,9 @@ import "../WomensPage/WomensPage.css"
 import Pagination from '../Pagination'
 import { getMen } from '../Api/Api'
 import { getMenAll } from '../Api/Api'
+import Navbar from '../Navbar/Navbar'
+import UpperBar from '../Navbar/UpperBar'
+import Footer from '../Footer/Footer'
 
 
 
@@ -90,6 +93,9 @@ const MensPage = () => {
   console.log(name)
 
   return (
+    <>
+    <UpperBar/>
+    <Navbar/>
    <Box w={["100%","90%","95%"]} m="auto" mt="20px">
     <Box>
        <Heading fontFamily="sans-serif" fontStyle={24}>You Searched For Mens</Heading>
@@ -193,7 +199,8 @@ const MensPage = () => {
     </Box>
 
    </Box>
-
+   <Footer/>
+   </>
   )
 }
 

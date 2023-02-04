@@ -5,6 +5,7 @@ import BoysPage from "../Components/BoysPage/BoysPage"
 import GirlsPage from "../Components/GirlsPage/GirlsPage"
 import WomensPage from "../Components/WomensPage/WomensPage"
 import React from 'react'
+import Admin from "../Pages/Admin"
 
 const AllRoutes = () => {
   return (
@@ -14,7 +15,7 @@ const AllRoutes = () => {
         <Route path="/boys" element={<BoysPage />} />
         <Route path="/girls" element={<GirlsPage />} />
         <Route path="/womens" element={<WomensPage />} />
-
+        <Route path="/admin/*" element={<Admin/>} />
      </Routes>
   )
 }

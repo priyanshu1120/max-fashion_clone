@@ -5,12 +5,15 @@ import "../WomensPage/WomensPage.css"
 import Pagination from '../Pagination'
 import { getGirl } from '../Api/Api'
 import { getGirlAll } from '../Api/Api'
+import UpperBar from '../Navbar/UpperBar'
+import Navbar from '../Navbar/Navbar'
+import Footer from '../Footer/Footer'
 
 
 
 const GirlsPage = () => {
 
-
+   
     const [girlData,setGirlData] = useState([])
     const [pages,setPages] = useState(1)
     const [name,setName] = useState("Tops")
@@ -64,6 +67,9 @@ const GirlsPage = () => {
   console.log(name)
 
   return (
+    <>
+    <UpperBar />
+     <Navbar />
    <Box w={["100%","90%","95%"]} m="auto" mt="20px">
     <Box>
        <Heading fontFamily="sans-serif" fontStyle={24}>You Searched For Girls</Heading>
@@ -167,7 +173,8 @@ const GirlsPage = () => {
     </Box>
 
    </Box>
-
+   <Footer />
+   </>
   )
 }
 

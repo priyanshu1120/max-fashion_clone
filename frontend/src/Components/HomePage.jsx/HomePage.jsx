@@ -3,11 +3,16 @@ import "./HomePage.css"
 import ImageSlider from './ImageSlider'
 import {Link} from "react-router-dom";
 import { Heading,Box,Img } from '@chakra-ui/react';
+import UpperBar from '../Navbar/UpperBar';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 
 const HomePage = () => {
 
   return (
     <>
+    <UpperBar />
+     <Navbar />
     <div className="blue-box" >
         Free shipping on All Orders + Extra ₹ 200+ off. code MAX200.
     </div>
@@ -177,6 +182,7 @@ const HomePage = () => {
         <img src="https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-department-modularblock8-oneBythree-A-Women-21Oct2020.jpg" />
       </Box></a>
 
+     <Footer/>
 
     </>
     

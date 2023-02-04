@@ -49,3 +49,6 @@ export const  getMen = ({pages,name})=>{
        export const  getSearch = ({pages,text})=>{
         return fetch(`https://relieved-outgoing-afterthought.glitch.me/Product?_page=${pages}&_limit=12&item_name=${text}`)
       }
+
+
+      export const baseurl = "http://localhost:7500/product"

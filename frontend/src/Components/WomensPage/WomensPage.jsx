@@ -3,6 +3,9 @@ import React,{useState,useEffect} from 'react'
 import "./WomensPage.css"
 import Pagination from '../Pagination'
 import { getWomen } from '../Api/Api'
+import UpperBar from '../Navbar/UpperBar'
+import Footer from '../Footer/Footer'
+import Navbar from '../Navbar/Navbar'
 
 
 
@@ -50,6 +53,9 @@ const handlePages=(value)=>{
   console.log(name)
 
   return (
+    <>
+  <UpperBar/>
+  <Navbar/>
    <Box w={["100%","90%","95%"]} m="auto" mt="20px">
     <Box>
        <Heading fontFamily="sans-serif" fontStyle={24}>You Searched For Women</Heading>
@@ -153,7 +159,8 @@ const handlePages=(value)=>{
     </Box>
 
    </Box>
-
+   <Footer/>
+   </>
   )
 }
 
