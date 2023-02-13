@@ -1,5 +1,5 @@
-import { Box, useToast } from "@chakra-ui/react";
-import React from "raect";
+import { Box, useToast } from "@chakra-ui/react"
+import React from "react"
 
 export const Helper = ({status,text})=>{
   const toast = useToast()

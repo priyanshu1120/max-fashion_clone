@@ -1,13 +1,13 @@
 
 import { Box, VStack,Heading,Stack,Flex, SimpleGrid, Img,Text,Button, propNames } from '@chakra-ui/react'
 import React,{useState,useEffect} from 'react'
-import "../WomensPage/WomensPage.css"
-import Pagination from '../Pagination'
-import { getGirl } from '../Api/Api'
-import { getGirlAll } from '../Api/Api'
-import UpperBar from '../Navbar/UpperBar'
-import Navbar from '../Navbar/Navbar'
-import Footer from '../Footer/Footer'
+import "./WomensPage.css"
+import Pagination from '../Components/Pagination'
+import { getGirl } from '../Utils/Api'
+import { getGirlAll } from '../Utils/Api'
+import UpperBar from '../Components/Navbar/UpperBar'
+import Navbar from '../Components/Navbar/Navbar'
+import Footer from '../Components/Footer/Footer'
 
 
 

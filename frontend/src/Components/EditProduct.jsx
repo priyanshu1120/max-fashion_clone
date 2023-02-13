@@ -17,7 +17,7 @@ import axios from "axios"
 import { Box, Radio, RadioGroup, Select, Stack, Text, useToast } from "@chakra-ui/react";
 import {FiEdit} from "react-icons/fi"
 import { Helper } from "../Helper";
-import { baseurl } from "./Api/Api";
+import { baseurl } from "../Utils/Api";
 
 
 
