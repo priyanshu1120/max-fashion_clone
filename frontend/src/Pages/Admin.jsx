@@ -16,7 +16,7 @@ import AddProduct from "../Components/AddProduct";
 import EditProduct from "../Components/EditProduct";
 import EditImage from "../Components/EditImage";
 import { useFetch } from "../CustomHooks/useFetch";
-import { baseurl } from "../Components/Api/Api";
+import { baseurl } from "../Utils/Api"; 
 
 const Admin = () => {
   const [limit, setLimit] = useState(10);

@@ -1,18 +1,22 @@
 import React, {useState} from 'react'
 import "./HomePage.css"
-import ImageSlider from './ImageSlider'
+
+import ImageSlider from '../Components/HomePage.jsx/ImageSlider'
 import {Link} from "react-router-dom";
 import { Heading,Box,Img } from '@chakra-ui/react';
-import UpperBar from '../Navbar/UpperBar';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
+import Navbar from '../Components/Navbar/Navbar';
+import Footer from '../Components/Footer/Footer';
 
 const HomePage = () => {
+    
+   
 
   return (
     <>
-    <UpperBar />
      <Navbar />
+
+     {/* <div>
+
     <div className="blue-box" >
         Free shipping on All Orders + Extra ₹ 200+ off. code MAX200.
     </div>
@@ -32,7 +36,7 @@ const HomePage = () => {
       <hr style={{marginTop:"40px"}}/>
       <Box mt="40px">
            <Heading ml="40px" fontWeight={500}>Shop By Category</Heading>
-           {/* <!-- catagory list  --> */}
+         
       <div id="catogary_container">
         <div className="cattitle">
         </div>
@@ -180,9 +184,9 @@ const HomePage = () => {
       <Heading ml="30px" mt="40px" fontWeight={500}>Connect With Us</Heading>
       <a href="https://api.whatsapp.com/send?phone=916366874274&text=I%20would%20like%20to%20sign-up%20to%20receive%20updates%20from%20Max%20Fashion"><Box m="auto" mt="40px" display="flex"w="90%">
         <img src="https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-department-modularblock8-oneBythree-A-Women-21Oct2020.jpg" />
-      </Box></a>
-
-     <Footer/>
+      </Box></a> 
+  </div> */}
+     {/* <Footer/> */}
 
     </>
     

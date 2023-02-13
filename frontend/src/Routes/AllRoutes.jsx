@@ -1,11 +1,12 @@
 import {Routes,Route} from "react-router-dom"
-import HomePage from "../Components/HomePage.jsx/HomePage"
-import MensPage from "../Components/MensPage/MensPage"
-import BoysPage from "../Components/BoysPage/BoysPage"
-import GirlsPage from "../Components/GirlsPage/GirlsPage"
-import WomensPage from "../Components/WomensPage/WomensPage"
+
+import MensPage from "../Pages/MensPage"
+import BoysPage from "../Pages/BoysPage"
+import GirlsPage from "../Pages/GirlsPage"
+import WomensPage from "../Pages/WomensPage"
 import React from 'react'
 import Admin from "../Pages/Admin"
+import HomePage from "../Pages/HomePage"
 
 const AllRoutes = () => {
   return (

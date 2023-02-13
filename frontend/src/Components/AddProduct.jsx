@@ -15,7 +15,7 @@ import {
 import axios from "axios"
 import { Radio, RadioGroup, Select, Stack, Text, useToast } from "@chakra-ui/react";
 import { useFetch } from "../CustomHooks/useFetch";
-import { baseurl } from "./Api/Api";
+import { baseurl } from "../Utils/Api";
 
 const prodObj = {
   image: [],

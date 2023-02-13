@@ -17,7 +17,7 @@ import axios from "axios"
 import { Box, Radio, RadioGroup, Select, Stack, Text, useToast } from "@chakra-ui/react";
 import {BsImages} from "react-icons/bs"
 import { ToastExample } from "../Helper";
-import { baseurl } from "./Api/Api";
+import { baseurl } from "../Utils/Api";
 
 
 const EditImage = ({data,getData}) => {
