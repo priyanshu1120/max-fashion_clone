@@ -341,10 +341,10 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: "mens",
+    label: "women",
     children: [
       {
-        gender:"mens",
+        gender:"women",
         label: "Top & Tees",
         subLabel: ["T-shirt","Tops & tees","Shirts","Tunics","Shurgs","Zodiac Tees", "Curves" ],
         href: "#",
@@ -387,27 +387,162 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Women",
+    label: "mens",
     children: [
       {
-        label: "Job Board",
-        subLabel:["Topwear","Tops&tees","Shirts","toe"],
+        gender:"mens",
+        label: "Topwear",
+        subLabel: ["T-shirt","Polos","Casual Shirts","Formal Shirts"],
         href: "#",
       },
       {
-        label: "Freelance Projects",
-        subLabel: ["Topwear","Tops&tees","Shirts","toe"],
+        label: "Bottomwear",
+        subLabel: ["Jeans","Trousers","Capris","Shorts & 3/4 ths"],
+        href: "#",
+      },
+      {
+        label: "Sportswear",
+        subLabel: ["Tees & Polos","Trackpants & Joggers","Shorts & 3/4 ths"],
+        href: "#",
+      },
+      {
+        label: "Loungewear",
+        subLabel: ["Tees","Sets","Bottoms"],
+        href: "#",
+      },
+      {
+        label:"Indian Wear",
+        subLabel: ["Kurtas","Jackets"],
+        href: "#",
+      },
+      {
+        label: "Innerwear",
+        subLabel: ["Vests","Briefs","Boxers"],
+        href: "#",
+      },
+      {
+        label: "Accessories",
+        subLabel: ["Face Masks","Bags","Belts","Caps","Wallets","Socks","Handkerchifes","Neck Ties"],
+        href: "#",
+      },
+      {
+        label:"Footwear",
+        subLabel: ["Casual shoes","Sports shoes","Sanda;s & Flip Flops"],
+        href: "#",
+      },
+      {
+        label:"Winterwear",
+        subLabel: ["Sweatshirts & Hoddies"],
+        href: "#",
+      },
+      {
+        label:"Online Exclusives",
+        subLabel: ["Tops","Sports Wear","Bottoms","Loungewear","Shoes"],
         href: "#",
       },
     ],
   },
   {
     label: "Boys",
-    href: "#",
+    children: [
+      {
+        gender:"boys",
+        label: "Topwear",
+        subLabel: ["Shirts","Polos"],
+        href: "#",
+      },
+      {
+        label: "Bottomwear",
+        subLabel: ["Jeans","Trousers","Track Pants & Joggers","Shorts & 3/4 ths"],
+        href: "#",
+      },
+      {
+        label: "Essentials",
+        subLabel: ["Infant Besics","Innerwear","Sleepwear"],
+        href: "#",
+      },
+      {
+        label: "Accessories",
+        subLabel: ["Face Masks","Bags","Caps","Socks","Back to School","Soft Toys"],
+        href: "#",
+      },
+      {
+        label:"Indian Wear",
+        subLabel: ["Sets","Jackets"],
+        href: "#",
+      },
+      {
+        label: "Footwear",
+        subLabel: ["Casual Shoes","Boots","Sandals & Flip Flops"],
+        href: "#",
+      },
+      {
+        label: "Baby Boy(0-2 yrs)",
+        subLabel: ["Bodysuits & Sleepsuits","Clothing Sets","Gift Sets","Tees ^ Polos","Shorts","Jeans & Trousers","Winterwear","Accessories"],
+        href: "#",
+      },
+      {
+        label:"Winterwear",
+        subLabel: ["Sweatshirts & Hoddies","Sweaters & Cardigans","Jackets","Accessories"],
+        href: "#",
+      },
+      {
+        label:"Online Exclusives",
+        subLabel: ["Tops","Baby Boys","Bottoms","Accessories","Shoes","Essentials"],
+        href: "#",
+      },
+    ],
   },
   {
     label: "Girls",
-    href: "#",
+    children: [
+      {
+        gender:"girls",
+        label: "Topwear",
+        subLabel: ["Top & Tees","Shirts" ],
+        href: "#",
+      },
+      {
+        label: "Bottomwear",
+        subLabel: ["Jeans & Jeggings","Trousers","Shorts & Skirts","Leggings","Track Pants & Joggers"],
+        href: "#",
+      },
+      {
+        label: "Essentials",
+        subLabel: ["Infant Besics","Innerwear","Sleepwear"],
+        href: "#",
+      },
+      {
+        label: "Accessories",
+        subLabel: ["Face Masks","Bags","Sunglasses","Caps","Socks","Hair Accessories","Back to School","Soft Toys"],
+        href: "#",
+      },
+      {
+        label:"Indian Wear",
+        subLabel: ["Dresses & Kurtas","Sets"],
+        href: "#",
+      },
+      {
+        label: "Baby Girl(0-2 yrs)",
+        subLabel: ["Bodysuits & Sleepsuits","Clothing & Sets","Gift Sets","Tops & Tees","Dresses" ,"Pyjamas & Leggings","Shorts & Skirts","Jeans & Trousers","Winterwear","Accessories"],
+        href: "#",
+      },
+      {
+        label: "Footwear",
+        subLabel: ["Ballerinas","Sandals & Flip Flops","Casual Shoes"],
+        href: "#",
+      },
+      {
+        label:"Winterwear",
+        subLabel: ["Sweatshirts & Hoddies","Sweters & Cardigans","Jackets","Accessories"],
+        href: "#",
+      },
+      {
+        label:"Online Exclusives",
+        subLabel: ["Tops","Dresses","Bottoms","Baby Girls","Essentials","Shoes","Indian Wear"],
+        href: "#",
+      },
+    ],
   },
 ];
 
