@@ -5,7 +5,7 @@ import { BsHandbag } from "react-icons/bs";
 import "./Navbar.css";
 import { ModalNavbar } from "./ModalNavbar";
 import { useState, useEffect } from "react";
-import { getSearch } from "../../Utils/Api";
+import { baseurl, getSearch } from "../../Utils/Api";
 import UpperBar from "./UpperBar";
 import {
   Box,
@@ -26,6 +26,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -33,6 +34,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
+import { useFetch } from "../../CustomHooks/useFetch";
 
 const Navbar = () => {
   const [text, setText] = useState("");
@@ -152,17 +154,22 @@ const Navbar = () => {
   );
 };
 
+// <========================DesktopNav==========================================>
 const DesktopNav = () => {
   const linkColor = useColorModeValue("black", "gray.200");
   const linkHoverColor = useColorModeValue("blue", "white");
   const popoverContentBgColor = useColorModeValue("white", "black");
-
+  const [gender,setGender] = useState("")
+const handleover=(item)=>{
+    setGender(item)
+}
   return (
     <Stack direction={"row"} spacing={4} >
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label} >
           <Popover trigger={"hover"} placement={"bottom-start"} >
             <PopoverTrigger>
+              <Box onMouseOver={()=>handleover(navItem.label)}>
               <Link
                 p={2}
                 href={navItem.href ?? "#"}
@@ -176,23 +183,20 @@ const DesktopNav = () => {
               >
                 {navItem.label}
               </Link>
+              </Box>
             </PopoverTrigger>
 
             {navItem.children && (
               <PopoverContent
-                // border={0}
-                border = {"1px solid"}
                 boxShadow={"xl"}
                 bg={popoverContentBgColor}
                 p={4}
                 rounded={"xl"}
                 w={"100vw"}
-                h="80vh"
-              
               >
-                <SimpleGrid columns={[1, 2, 3, 4]} spacing={5}>
+                <SimpleGrid columns={[1, 2, 3, 4]} spacing={1}>
                   {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
+                    <DesktopSubNav key={child.label} {...child} gender = {gender}  />
                   ))}
                 </SimpleGrid>
               </PopoverContent>
@@ -204,7 +208,29 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+// <======================== DesktopNav subnav==========================================>
+const DesktopSubNav = ({ label, href, subLabel,gender }) => {
+
+   const [limit, setLimit] = useState(10);
+   const [text, setText] = useState("");
+   const toast = useToast();
+
+   let url = baseurl;
+   if (text.length > 0) {
+     url = `${baseurl}/${gender}?category=${text}&limit=${limit}`;
+   }
+
+    const handleClick = (el)=>{
+          setText(el)
+         console.log(url)
+    }
+    const { data, loading, getData, error } = useFetch(url);
+     useEffect(()=>{
+         getData()
+     },[])
+   
+
+
   return (
     <Link
       href={href}
@@ -220,10 +246,11 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
             transition={"all .3s ease"}
             _groupHover={{ color: "pink.400" }}
             fontWeight={500}
+           
           >
             {label}
           </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
+          <Box fontSize={"sm"}>{subLabel.map((el,i)=><Box _hover={{ color: "blue" }} onClick={()=>handleClick(el)}>{el}</Box>)}</Box>
         </Box>
         <Flex
           transition={"all .3s ease"}
@@ -241,6 +268,8 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
   );
 };
 
+// <======================== MobileNav ==========================================>
+
 const MobileNav = () => {
   return (
     <Stack
@@ -254,6 +283,8 @@ const MobileNav = () => {
     </Stack>
   );
 };
+
+// <=======================  MobileNavItem ==========================================>
 
 const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -310,76 +341,72 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: "Inspiration",
+    label: "mens",
     children: [
       {
+        gender:"mens",
         label: "Top & Tees",
-        subLabel: "Trending Design to inspire you",
+        subLabel: ["T-shirt","Tops & tees","Shirts","Tunics","Shurgs","Zodiac Tees", "Curves" ],
         href: "#",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        label: "Bottomwear",
+        subLabel: ["Jeans & Jaggings","Trousers","Capris","Shorts & Skirts","Leggings","Fashion Bootoms Curves"],
         href: "#",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        label: "Dresses & Jumpsuits",
+        subLabel: ["Dresses","Jumpsuits","Curves (Plus Size)"],
         href: "#",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        label: "Sleepwear",
+        subLabel: ["Dresses","Sets","Tops","Bottoms","Curves(Plus Size)"],
         href: "#",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        label:"Indian Wear",
+        subLabel: ["Kurtas & Kurtis","Tops","Dresses","Suits & sets","Plazzo","Salwar & Patialas","Skirts"],
         href: "#",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        label: "Sportwear",
+        subLabel: ["Topwear","Tops&tees","Trackpants","Shorts","Sport Bra" ,"Curves(Plus Size)"],
         href: "#",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        label: "Footwear",
+        subLabel: ["Dresses","Sets","Tops","Bottoms","Curves(Plus Size)"],
         href: "#",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
-        href: "#",
-      },
-      {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        label:"Winterwear",
+        subLabel: ["Sweatshirts & Hoddies","Sweters & Cardigans","Jackets","Accessories"],
         href: "#",
       },
     ],
   },
   {
-    label: "Find Work",
+    label: "Women",
     children: [
       {
         label: "Job Board",
-        subLabel: "Find your dream design job",
+        subLabel:["Topwear","Tops&tees","Shirts","toe"],
         href: "#",
       },
       {
         label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
+        subLabel: ["Topwear","Tops&tees","Shirts","toe"],
         href: "#",
       },
     ],
   },
   {
-    label: "Learn Design",
+    label: "Boys",
     href: "#",
   },
   {
-    label: "Hire Designers",
+    label: "Girls",
     href: "#",
   },
 ];
