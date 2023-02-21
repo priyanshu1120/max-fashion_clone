@@ -4,7 +4,11 @@ const product=express.Router();
 product.use(express.json());
 
 product.get("/",async(req,res)=>{
-    res.send(await ProductModel.find());
+    try {
+      res.send(await ProductModel.find());
+    } catch (error) {
+      res.status(500).send({err:error});
+    }
 });
 
 product.get("/single/:id",async(req,res)=>{
