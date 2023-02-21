@@ -11,7 +11,7 @@ app.use(cors({
     origin:"*"
 }));
 
-app.get("/",(req,res)=>{
+app.get("/",async(req,res)=>{
     try {
         res.send(await ProductModel.find());
       } catch (error) {
