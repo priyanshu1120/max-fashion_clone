@@ -4,6 +4,7 @@ require("dotenv").config()
 const {connect} = require("./Config/db.js")
 const cors = require("cors")
 const product = require("./routes/product.route.js");
+const {ProductModel} = require("./model/product.model");
 const port=process.env.PORT||4000;
 app.use(express.json())
 app.use(cors({
@@ -11,7 +12,11 @@ app.use(cors({
 }));
 
 app.get("/",(req,res)=>{
-    res.send("server run successfully")
+    try {
+        res.send(await ProductModel.find());
+      } catch (error) {
+        res.send({err:error});
+      }
 })
 app.use("/product",product)
 app.listen(port,()=>{
