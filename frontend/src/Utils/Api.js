@@ -1,12 +1,12 @@
 // <============mens api =====================================>
 
 export const  getMenAll = ()=>{
-    return fetch(`https://relieved-outgoing-afterthought.glitch.me/mens`)
+    return fetch(`https://max-fashion-clone-pi.vercel.app/mens`)
   }
 
 
 export const  getMen = ({pages,name})=>{
-    return fetch(`https://relieved-outgoing-afterthought.glitch.me/mens?_page=${pages}&_limit=12&item_name=${name}`)
+    return fetch(`https://max-fashion-clone-pi.vercel.app/mens?_page=${pages}&_limit=12&item_name=${name}`)
   }
 
 
@@ -14,7 +14,7 @@ export const  getMen = ({pages,name})=>{
   // <============ womens api =====================================>
 
   export const  getWomen = ({pages,name})=>{
-    return fetch(`https://relieved-outgoing-afterthought.glitch.me/womens?_page=${pages}&_limit=12&item_name=${name}`)
+    return fetch(`https://max-fashion-clone-pi.vercel.app/womens?_page=${pages}&_limit=12&item_name=${name}`)
   }
 
 
@@ -24,11 +24,11 @@ export const  getMen = ({pages,name})=>{
 
 
   export const  getGirlAll = ()=>{
-    return fetch(`https://relieved-outgoing-afterthought.glitch.me/girls`)
+    return fetch(`https://max-fashion-clone-pi.vercel.app/girls`)
   }
 
   export const  getGirl = ({pages,name})=>{
-    return fetch(`https://relieved-outgoing-afterthought.glitch.me/girls?_page=${pages}&_limit=12&item_name=${name}`)
+    return fetch(`https://max-fashion-clone-pi.vercel.app/girls?_page=${pages}&_limit=12&item_name=${name}`)
   }
 
 
@@ -36,19 +36,19 @@ export const  getMen = ({pages,name})=>{
 
 
     export const  getBoysAll = ()=>{
-      return fetch(`https://relieved-outgoing-afterthought.glitch.me/boys`)
+      return fetch(`https://max-fashion-clone-pi.vercel.app/boys`)
     }
   
     export const  getBoy = ({pages,name})=>{
-      return fetch(`https://relieved-outgoing-afterthought.glitch.me/boys?_page=${pages}&_limit=12&item_name=${name}`)
+      return fetch(`https://max-fashion-clone-pi.vercel.app/boys?_page=${pages}&_limit=12&item_name=${name}`)
     }
 
        // <============ Search api =====================================>
 
 
        export const  getSearch = ({pages,text})=>{
-        return fetch(`https://relieved-outgoing-afterthought.glitch.me/Product?_page=${pages}&_limit=12&item_name=${text}`)
+        return fetch(`https://max-fashion-clone-pi.vercel.app/Product?_page=${pages}&_limit=12&item_name=${text}`)
       }
 
 
-      export const baseurl = "http://localhost:7500/product"
+      export const baseurl = "https://max-fashion-clone-pi.vercel.app"

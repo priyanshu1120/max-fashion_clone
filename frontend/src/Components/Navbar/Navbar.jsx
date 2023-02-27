@@ -101,7 +101,7 @@ const Navbar = () => {
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
             <Box>
-              <Img w="100%" h="100%" src="./images/maxlogo.png" alt ="logo"/>
+              <Img w="100%" h="100%" src="./images/maxlogo.png" alt="logo" />
             </Box>
             <Flex display={{ base: "none", md: "flex" }} ml={10} align="center">
               <DesktopNav />
@@ -112,7 +112,7 @@ const Navbar = () => {
             flex={{ base: 1, md: 0 }}
             justify={"flex-end"}
             direction={"row"}
-            spacing={[2,2,4,4]}
+            spacing={[2, 2, 4, 4]}
             border="1px solid red"
           >
             <Button
@@ -123,10 +123,14 @@ const Navbar = () => {
               color="black"
               href={"#"}
             >
-              Sign In & signup 
+              Sign In & signup
             </Button>
-            <Box><MdFavoriteBorder fontSize={"20px"} /></Box>
-            <Box><BsHandbag fontSize={"20px"} /></Box>
+            <Box>
+              <MdFavoriteBorder fontSize={"20px"} />
+            </Box>
+            <Box>
+              <BsHandbag fontSize={"20px"} />
+            </Box>
           </Stack>
         </Flex>
 
@@ -159,30 +163,30 @@ const DesktopNav = () => {
   const linkColor = useColorModeValue("black", "gray.200");
   const linkHoverColor = useColorModeValue("blue", "white");
   const popoverContentBgColor = useColorModeValue("white", "black");
-  const [gender,setGender] = useState("")
-const handleover=(item)=>{
-    setGender(item)
-}
+  const [gender, setGender] = useState("");
+  const handleover = (item) => {
+    setGender(item);
+  };
   return (
-    <Stack direction={"row"} spacing={4} >
+    <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label} >
-          <Popover trigger={"hover"} placement={"bottom-start"} >
+        <Box key={navItem.label}>
+          <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <Box onMouseOver={()=>handleover(navItem.label)}>
-              <Link
-                p={2}
-                href={navItem.href ?? "#"}
-                fontSize={"sm"}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link>
+              <Box onMouseOver={() => handleover(navItem.label)}>
+                <Link
+                  p={2}
+                  href={navItem.href ?? "#"}
+                  fontSize={"sm"}
+                  fontWeight={500}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: "none",
+                    color: linkHoverColor,
+                  }}
+                >
+                  {navItem.label}
+                </Link>
               </Box>
             </PopoverTrigger>
 
@@ -196,7 +200,11 @@ const handleover=(item)=>{
               >
                 <SimpleGrid columns={[1, 2, 3, 4]} spacing={1}>
                   {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} gender = {gender}  />
+                    <DesktopSubNav
+                      key={child.label}
+                      {...child}
+                      gender={gender}
+                    />
                   ))}
                 </SimpleGrid>
               </PopoverContent>
@@ -209,27 +217,23 @@ const handleover=(item)=>{
 };
 
 // <======================== DesktopNav subnav==========================================>
-const DesktopSubNav = ({ label, href, subLabel,gender }) => {
+const DesktopSubNav = ({ label, href, subLabel, gender }) => {
+  const [limit, setLimit] = useState(10);
+  const [text, setText] = useState("");
+  const toast = useToast();
 
-   const [limit, setLimit] = useState(10);
-   const [text, setText] = useState("");
-   const toast = useToast();
-
-   let url = baseurl;
-   if (text.length > 0) {
-     url = `${baseurl}/${gender}?category=${text}&limit=${limit}`;
-   }
-
-    const handleClick = (el)=>{
-          setText(el)
-         console.log(url)
-    }
-    const { data, loading, getData, error } = useFetch(url);
-     useEffect(()=>{
-         getData()
-     },[])
-   
-
+  let url = baseurl;
+  if (text.length > 0) {
+    url = `${baseurl}/${gender}?category=${text}&limit=${limit}`;
+  }
+  const { data, loading, getData, error } = useFetch();
+  const handleClick = (el) => {
+    setText(el.toLowerCase());
+  };
+  useEffect(() => {
+    getData(url);
+    console.log(url, data);
+  }, [text]);
 
   return (
     <Link
@@ -246,11 +250,20 @@ const DesktopSubNav = ({ label, href, subLabel,gender }) => {
             transition={"all .3s ease"}
             _groupHover={{ color: "pink.400" }}
             fontWeight={500}
-           
           >
             {label}
           </Text>
-          <Box fontSize={"sm"}>{subLabel.map((el,i)=><Box _hover={{ color: "blue" }} onClick={()=>handleClick(el)}>{el}</Box>)}</Box>
+          <Box fontSize={"sm"}>
+            {subLabel.map((el, i) => (
+              <Box
+                _hover={{ color: "blue" }}
+                key={i}
+                onClick={() => handleClick(el)}
+              >
+                {el}
+              </Box>
+            ))}
+          </Box>
         </Box>
         <Flex
           transition={"all .3s ease"}
@@ -344,44 +357,79 @@ const NAV_ITEMS = [
     label: "women",
     children: [
       {
-        gender:"women",
+        gender: "women",
         label: "Top & Tees",
-        subLabel: ["T-shirt","Tops & tees","Shirts","Tunics","Shurgs","Zodiac Tees", "Curves" ],
+        subLabel: [
+          "T-shirt",
+          "Tops & tees",
+          "Shirt",
+          "Tunics",
+          "Shurgs",
+          "Zodiac Tees",
+          "Curves",
+        ],
         href: "#",
       },
       {
         label: "Bottomwear",
-        subLabel: ["Jeans & Jaggings","Trousers","Capris","Shorts & Skirts","Leggings","Fashion Bootoms Curves"],
+        subLabel: [
+          "Jeans & Jaggings",
+          "Trousers",
+          "Capris",
+          "Shorts & Skirts",
+          "Leggings",
+          "Fashion Bootoms Curves",
+        ],
         href: "#",
       },
       {
         label: "Dresses & Jumpsuits",
-        subLabel: ["Dresses","Jumpsuits","Curves (Plus Size)"],
+        subLabel: ["Dresses", "Jumpsuits", "Curves (Plus Size)"],
         href: "#",
       },
       {
         label: "Sleepwear",
-        subLabel: ["Dresses","Sets","Tops","Bottoms","Curves(Plus Size)"],
+        subLabel: ["Dresses", "Sets", "Tops", "Bottoms", "Curves(Plus Size)"],
         href: "#",
       },
       {
-        label:"Indian Wear",
-        subLabel: ["Kurtas & Kurtis","Tops","Dresses","Suits & sets","Plazzo","Salwar & Patialas","Skirts"],
+        label: "Indian Wear",
+        subLabel: [
+          "Kurtas & Kurtis",
+          "Tops",
+          "Dresses",
+          "Suits & sets",
+          "Plazzo",
+          "Salwar & Patialas",
+          "Skirts",
+        ],
         href: "#",
       },
       {
         label: "Sportwear",
-        subLabel: ["Topwear","Tops&tees","Trackpants","Shorts","Sport Bra" ,"Curves(Plus Size)"],
+        subLabel: [
+          "Topwear",
+          "Tops&tees",
+          "Trackpants",
+          "Shorts",
+          "Sport Bra",
+          "Curves(Plus Size)",
+        ],
         href: "#",
       },
       {
         label: "Footwear",
-        subLabel: ["Dresses","Sets","Tops","Bottoms","Curves(Plus Size)"],
+        subLabel: ["Dresses", "Sets", "Tops", "Bottoms", "Curves(Plus Size)"],
         href: "#",
       },
       {
-        label:"Winterwear",
-        subLabel: ["Sweatshirts & Hoddies","Sweters & Cardigans","Jackets","Accessories"],
+        label: "Winterwear",
+        subLabel: [
+          "Sweatshirts & Hoddies",
+          "Sweters & Cardigans",
+          "Jackets",
+          "Accessories",
+        ],
         href: "#",
       },
     ],
@@ -390,54 +438,63 @@ const NAV_ITEMS = [
     label: "mens",
     children: [
       {
-        gender:"mens",
+        gender: "mens",
         label: "Topwear",
-        subLabel: ["T-shirt","Polos","Casual Shirts","Formal Shirts"],
+        subLabel: ["T-shirt", "Polos", "Casual Shirts", "Formal Shirts"],
         href: "#",
       },
       {
         label: "Bottomwear",
-        subLabel: ["Jeans","Trousers","Capris","Shorts & 3/4 ths"],
+        subLabel: ["Jeans", "Trousers", "Capris", "Shorts & 3/4 ths"],
         href: "#",
       },
       {
         label: "Sportswear",
-        subLabel: ["Tees & Polos","Trackpants & Joggers","Shorts & 3/4 ths"],
+        subLabel: ["Tees & Polos", "Trackpants & Joggers", "Shorts & 3/4 ths"],
         href: "#",
       },
       {
         label: "Loungewear",
-        subLabel: ["Tees","Sets","Bottoms"],
+        subLabel: ["Tees", "Sets", "Bottoms"],
         href: "#",
       },
       {
-        label:"Indian Wear",
-        subLabel: ["Kurtas","Jackets"],
+        label: "Indian Wear",
+        subLabel: ["Kurtas", "Jackets"],
         href: "#",
       },
       {
         label: "Innerwear",
-        subLabel: ["Vests","Briefs","Boxers"],
+        subLabel: ["Vests", "Briefs", "Boxers"],
         href: "#",
       },
       {
         label: "Accessories",
-        subLabel: ["Face Masks","Bags","Belts","Caps","Wallets","Socks","Handkerchifes","Neck Ties"],
+        subLabel: [
+          "Face Masks",
+          "Bags",
+          "Belts",
+          "Caps",
+          "Wallets",
+          "Socks",
+          "Handkerchifes",
+          "Neck Ties",
+        ],
         href: "#",
       },
       {
-        label:"Footwear",
-        subLabel: ["Casual shoes","Sports shoes","Sanda;s & Flip Flops"],
+        label: "Footwear",
+        subLabel: ["Casual shoes", "Sports shoes", "Sanda;s & Flip Flops"],
         href: "#",
       },
       {
-        label:"Winterwear",
+        label: "Winterwear",
         subLabel: ["Sweatshirts & Hoddies"],
         href: "#",
       },
       {
-        label:"Online Exclusives",
-        subLabel: ["Tops","Sports Wear","Bottoms","Loungewear","Shoes"],
+        label: "Online Exclusives",
+        subLabel: ["Tops", "Sports Wear", "Bottoms", "Loungewear", "Shoes"],
         href: "#",
       },
     ],
@@ -446,49 +503,82 @@ const NAV_ITEMS = [
     label: "Boys",
     children: [
       {
-        gender:"boys",
+        gender: "boys",
         label: "Topwear",
-        subLabel: ["Shirts","Polos"],
+        subLabel: ["Shirts", "Polos"],
         href: "#",
       },
       {
         label: "Bottomwear",
-        subLabel: ["Jeans","Trousers","Track Pants & Joggers","Shorts & 3/4 ths"],
+        subLabel: [
+          "Jeans",
+          "Trousers",
+          "Track Pants & Joggers",
+          "Shorts & 3/4 ths",
+        ],
         href: "#",
       },
       {
         label: "Essentials",
-        subLabel: ["Infant Besics","Innerwear","Sleepwear"],
+        subLabel: ["Infant Besics", "Innerwear", "Sleepwear"],
         href: "#",
       },
       {
         label: "Accessories",
-        subLabel: ["Face Masks","Bags","Caps","Socks","Back to School","Soft Toys"],
+        subLabel: [
+          "Face Masks",
+          "Bags",
+          "Caps",
+          "Socks",
+          "Back to School",
+          "Soft Toys",
+        ],
         href: "#",
       },
       {
-        label:"Indian Wear",
-        subLabel: ["Sets","Jackets"],
+        label: "Indian Wear",
+        subLabel: ["Sets", "Jackets"],
         href: "#",
       },
       {
         label: "Footwear",
-        subLabel: ["Casual Shoes","Boots","Sandals & Flip Flops"],
+        subLabel: ["Casual Shoes", "Boots", "Sandals & Flip Flops"],
         href: "#",
       },
       {
         label: "Baby Boy(0-2 yrs)",
-        subLabel: ["Bodysuits & Sleepsuits","Clothing Sets","Gift Sets","Tees ^ Polos","Shorts","Jeans & Trousers","Winterwear","Accessories"],
+        subLabel: [
+          "Bodysuits & Sleepsuits",
+          "Clothing Sets",
+          "Gift Sets",
+          "Tees ^ Polos",
+          "Shorts",
+          "Jeans & Trousers",
+          "Winterwear",
+          "Accessories",
+        ],
         href: "#",
       },
       {
-        label:"Winterwear",
-        subLabel: ["Sweatshirts & Hoddies","Sweaters & Cardigans","Jackets","Accessories"],
+        label: "Winterwear",
+        subLabel: [
+          "Sweatshirts & Hoddies",
+          "Sweaters & Cardigans",
+          "Jackets",
+          "Accessories",
+        ],
         href: "#",
       },
       {
-        label:"Online Exclusives",
-        subLabel: ["Tops","Baby Boys","Bottoms","Accessories","Shoes","Essentials"],
+        label: "Online Exclusives",
+        subLabel: [
+          "Tops",
+          "Baby Boys",
+          "Bottoms",
+          "Accessories",
+          "Shoes",
+          "Essentials",
+        ],
         href: "#",
       },
     ],
@@ -497,49 +587,88 @@ const NAV_ITEMS = [
     label: "Girls",
     children: [
       {
-        gender:"girls",
+        gender: "girls",
         label: "Topwear",
-        subLabel: ["Top & Tees","Shirts" ],
+        subLabel: ["Top & Tees", "Shirts"],
         href: "#",
       },
       {
         label: "Bottomwear",
-        subLabel: ["Jeans & Jeggings","Trousers","Shorts & Skirts","Leggings","Track Pants & Joggers"],
+        subLabel: [
+          "Jeans & Jeggings",
+          "Trousers",
+          "Shorts & Skirts",
+          "Leggings",
+          "Track Pants & Joggers",
+        ],
         href: "#",
       },
       {
         label: "Essentials",
-        subLabel: ["Infant Besics","Innerwear","Sleepwear"],
+        subLabel: ["Infant Besics", "Innerwear", "Sleepwear"],
         href: "#",
       },
       {
         label: "Accessories",
-        subLabel: ["Face Masks","Bags","Sunglasses","Caps","Socks","Hair Accessories","Back to School","Soft Toys"],
+        subLabel: [
+          "Face Masks",
+          "Bags",
+          "Sunglasses",
+          "Caps",
+          "Socks",
+          "Hair Accessories",
+          "Back to School",
+          "Soft Toys",
+        ],
         href: "#",
       },
       {
-        label:"Indian Wear",
-        subLabel: ["Dresses & Kurtas","Sets"],
+        label: "Indian Wear",
+        subLabel: ["Dresses & Kurtas", "Sets"],
         href: "#",
       },
       {
         label: "Baby Girl(0-2 yrs)",
-        subLabel: ["Bodysuits & Sleepsuits","Clothing & Sets","Gift Sets","Tops & Tees","Dresses" ,"Pyjamas & Leggings","Shorts & Skirts","Jeans & Trousers","Winterwear","Accessories"],
+        subLabel: [
+          "Bodysuits & Sleepsuits",
+          "Clothing & Sets",
+          "Gift Sets",
+          "Tops & Tees",
+          "Dresses",
+          "Pyjamas & Leggings",
+          "Shorts & Skirts",
+          "Jeans & Trousers",
+          "Winterwear",
+          "Accessories",
+        ],
         href: "#",
       },
       {
         label: "Footwear",
-        subLabel: ["Ballerinas","Sandals & Flip Flops","Casual Shoes"],
+        subLabel: ["Ballerinas", "Sandals & Flip Flops", "Casual Shoes"],
         href: "#",
       },
       {
-        label:"Winterwear",
-        subLabel: ["Sweatshirts & Hoddies","Sweters & Cardigans","Jackets","Accessories"],
+        label: "Winterwear",
+        subLabel: [
+          "Sweatshirts & Hoddies",
+          "Sweters & Cardigans",
+          "Jackets",
+          "Accessories",
+        ],
         href: "#",
       },
       {
-        label:"Online Exclusives",
-        subLabel: ["Tops","Dresses","Bottoms","Baby Girls","Essentials","Shoes","Indian Wear"],
+        label: "Online Exclusives",
+        subLabel: [
+          "Tops",
+          "Dresses",
+          "Bottoms",
+          "Baby Girls",
+          "Essentials",
+          "Shoes",
+          "Indian Wear",
+        ],
         href: "#",
       },
     ],
